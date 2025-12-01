@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نَفَس - الرئيسية</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .wave-divider {
+        display: none;
+    }
+    
+    /* الخيار الثالث بألوان فاتحة */
+    header {
+        margin-top: 70px;
+        padding: 100px 0 80px;
+        background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%) !important;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* تأثير إضافي للخلفية */
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    }
+    
+    /* ألوان النص متناسقة مع الخلفية */
+    .header-content {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .header-content h1 {
+        color: #745276 !important; /* تغيير لون العنوان الرئيسي */
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .header-content p {
+        color: #745276 !important; /* تغيير لون النص الثانوي */
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-shadow: 0 1px 5px rgba(255, 255, 255, 0.5);
+        line-height: 1.8;
+    }
+    
+    .logo i {
+        color: #745276 !important; /* تغيير لون أيقونة الكتاب */
+        text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        font-size: 5rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .logo i:hover {
+        transform: scale(1.1);
+        filter: brightness(1.1);
+    }
+    
+    /* تصميم الأيقونات الثلاث - إرجاع الألوان الأصلية */
+    .icons-section {
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    }
+    
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+    
+    .icon-card {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      padding: 3rem 2rem;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border: 2px solid #f0f0f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 4px;
+      transition: all 0.3s ease;
+    }
+
+    /* ألوان فاتحة لكل أيقونة - إرجاع الألوان الأصلية */
+    .icon-card:nth-child(1)::before { background: linear-gradient(90deg, #8B5FBF, #9D4EDD); }
+    .icon-card:nth-child(2)::before { background: linear-gradient(90deg, #4ECDC4, #06D6A0); }
+    .icon-card:nth-child(3)::before { background: linear-gradient(90deg, #FF6B6B, #FF9E64); }
+
+    .icon-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border-color: #e0e0e0;
+    }
+    
+    .icon-card:hover::before {
+      height: 6px;
+    }
+
+    .icon-card i {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    /* ألوان الأيقونات - إرجاع الألوان الأصلية */
+    .icon-card:nth-child(1) i { 
+      background: linear-gradient(135deg, #8B5FBF, #9D4EDD);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .icon-card:nth-child(2) i { 
+      background: linear-gradient(135deg, #4ECDC4, #06D6A0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .icon-card:nth-child(3) i { 
+      background: linear-gradient(135deg, #FF6B6B, #FF9E64);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .icon-card:hover i {
+      animation: bounce 0.6s ease;
+      transform: scale(1.1);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 60%, 100% { transform: translateY(0) scale(1.1); }
+      40% { transform: translateY(-8px) scale(1.1); }
+      80% { transform: translateY(-4px) scale(1.1); }
+    }
+
+    .icon-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #2D3047;
+      font-weight: 700;
+    }
+    
+    .icon-card p {
+      color: #666;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+    
+    /* ألوان العناوين في قسم الأيقونات */
+    h2 {
+        color: #745276 !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .section-subtitle {
+        color: #745276 !important;
+    }
+
+    /* تغيير لون نصوص شريط التنقل فقط */
+    .nav-menu li a {
+        color: #745276 !important;
+    }
+    
+    .nav-logo a span {
+        color: #745276 !important;
+    }
+    
+    .nav-logo a i {
+        color: #745276 !important;
+    }
+
+    /* تغيير لون أيقونة الكتب الملهمة والخط العلوي لها */
+    .icon-card:first-child i { 
+      background: linear-gradient(135deg, #D8BFD8, #D8BFD8) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    
+    .icon-card:first-child::before { 
+      background: linear-gradient(90deg, #D8BFD8, #D8BFD8) !important;
+    }
+
+    /* تغيير لون أيقونة الاقتباسات والخط العلوي لها */
+    .icon-card:nth-child(2) i { 
+      background: linear-gradient(135deg, #B0E0E6, #B0E0E6) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    
+    .icon-card:nth-child(2)::before { 
+      background: linear-gradient(90deg, #B0E0E6, #B0E0E6) !important;
+    }
+
+    /* تغيير لون أيقونة البودكاست والخط العلوي لها */
+    .icon-card:nth-child(3) i { 
+      background: linear-gradient(135deg, #FFC0CB, #FFC0CB) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    
+    .icon-card:nth-child(3)::before { 
+      background: linear-gradient(90deg, #FFC0CB, #FFC0CB) !important;
+    }
+
+    /* تغيير لون الفوتر ليصبح مثل الهيدر */
+    footer {
+        background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%) !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- شريط التنقل -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <i class="fas fa-feather-alt"></i>
+          <span>نَفَس</span>
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="books.html">الكتب</a></li>
+        <li><a href="quotes.html">الاقتباسات</a></li>
+        <li><a href="podcast.html">البودكاست</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- الهيدر بألوان فاتحة -->
+  <header style="background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%);">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-book-open" style="color: #745276; text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3); font-size: 5rem;"></i>
+      </div>
+      <h1 style="color: #745276; font-weight: 600; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5); font-size: 3.5rem;">نَفَس</h1>
+      <p style="color: #745276; font-size: 1.4rem; font-weight: 400; text-shadow: 0 1px 5px rgba(255, 255, 255, 0.5); line-height: 1.8;">اقرئي، تأملي، وتواصلي مع نفسك بسلام</p>
+    </div>
+  </header>
+
+  <!-- شبكة الأيقونات - 3 أيقونات فقط -->
+  <section class="icons-section" style="background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);">
+    <div class="container">
+      <h2 style="color: #745276;">استكشف نَفَس</h2>
+      <p class="section-subtitle" style="color: #745276;">اختر المسار الذي يناسب رحلتك نحو السلام الداخلي</p>
+      
+      <div class="icons-grid">
+        <!-- أيقونة الكتب -->
+        <a href="books.html" class="icon-card">
+          <i class="fas fa-book"></i>
+          <h3>الكتب الملهمة</h3>
+          <p>اكتشف مجموعة مختارة من الكتب التي تساعدك في رحلتك نحو السلام الداخلي والنمو الشخصي</p>
+        </a>
+        
+        <!-- أيقونة الاقتباسات -->
+        <a href="quotes.html" class="icon-card">
+          <i class="fas fa-quote-right"></i>
+          <h3>الاقتباسات</h3>
+          <p>اقتباسات يومية ملهمة تمنحك القوة والسلام الداخلي في رحلتك اليومية</p>
+        </a>
+        
+        <!-- أيقونة البودكاست -->
+        <a href="podcast.html" class="icon-card">
+          <i class="fas fa-headphones"></i>
+          <h3>البودكاست</h3>
+          <p>جلسات صوتية تساعدك على التأمل والتفكير الإيجابي والاسترخاء</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-feather-alt" style="color: #745276;"></i>
+          <span style="color: #745276;">نَفَس</span>
+        </div>
+        <p style="color: #745276;">مساحة هادئة للقراءة والتأمل والنمو الشخصي</p>
+      </div>
+      <div class="footer-bottom">
+        <p style="color: #745276;">&copy; 2025 نَفَس. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

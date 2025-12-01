@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نَفَس - الكتب</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* نفس أنماط الصفحة الرئيسية */
+    .wave-divider {
+        display: none;
+    }
+    
+    /* شريط التنقل بنفس ألوان الصفحة الرئيسية */
+    .nav-menu li a {
+        color: #745276 !important;
+    }
+    
+    .nav-logo a span {
+        color: #745276 !important;
+    }
+    
+    .nav-logo a i {
+        color: #745276 !important;
+    }
+    
+    /* هيدر الصفحة بنفس ألوان الصفحة الرئيسية */
+    .page-header {
+        margin-top: 70px;
+        padding: 100px 0 80px;
+        background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%) !important;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .page-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    }
+    
+    .page-header .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .page-header h1 {
+        color: #745276 !important;
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .page-header p {
+        color: #745276 !important;
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-shadow: 0 1px 5px rgba(255, 255, 255, 0.5);
+        line-height: 1.8;
+    }
+    
+    .page-header i {
+        color: #745276 !important;
+        text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        font-size: 3rem;
+    }
+    
+    /* قسم الكتب بنفس خلفية الصفحة الرئيسية */
+    .books-page {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      min-height: 100vh;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    /* تصميم بطاقات الكتب متناسق مع الصفحة الرئيسية */
+    .book-card {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      border: 2px solid #f0f0f0;
+      position: relative;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border-color: #e0e0e0;
+    }
+    
+    .book-cover {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .book-card:hover .book-cover img {
+      transform: scale(1.05);
+    }
+    
+    .book-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(216, 191, 216, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .book-card:hover .book-overlay {
+      opacity: 1;
+    }
+    
+    .read-btn {
+      background: white;
+      color: #745276;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .read-btn:hover {
+      background: #745276;
+      color: white;
+      transform: scale(1.05);
+      border-color: #745276;
+    }
+    
+    .book-info {
+      padding: 2rem;
+    }
+    
+    .book-info h3 {
+      color: #2D3047;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    
+    .book-info .author {
+      color: #745276;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    .book-info .description {
+      color: #666;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+    
+    /* الفوتر بنفس ألوان الصفحة الرئيسية */
+    footer {
+        background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%) !important;
+    }
+    
+    .footer-content, .footer-bottom {
+        color: #745276 !important;
+    }
+    
+    .footer-logo i, .footer-logo span {
+        color: #745276 !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <i class="fas fa-feather-alt"></i>
+          <span>نَفَس</span>
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="books.html" class="active">الكتب</a></li>
+        <li><a href="quotes.html">الاقتباسات</a></li>
+        <li><a href="podcast.html">البودكاست</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1><i class="fas fa-book"></i> الكتب الملهمة</h1>
+      <p>مجموعة مختارة من الكتب التي تساعدك في رحلتك نحو السلام الداخلي</p>
+    </div>
+  </section>
+
+  <section class="books-page">
+    <div class="container">
+      <div class="books-grid">
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="C:\Users\dell\Downloads\تنزيل (1).jpg" alt="السماح بالرحيل">
+            <div class="book-overlay">
+              <a href="books/samah.pdf" class="read-btn" target="_blank">
+                <i class="fas fa-book-open"></i>
+                اقرأ الآن
+              </a>
+            </div>
+          </div>
+          <div class="book-info">
+            <h3>السماح بالرحيل</h3>
+            <p class="author">ديفيد ر. هوكينز</p>
+            <p class="description">كتاب عملي يساعدك على التخلص من المشاعر السلبية والعقبات التي تمنعك من العيش بحرية وسلام.</p>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="C:\Users\dell\Downloads\تنزيل (1).jpg" alt="مُمتلئ بالفرَاغ">
+            <div class="book-overlay">
+              <a href="books/faragh.pdf" class="read-btn" target="_blank">
+                <i class="fas fa-book-open"></i>
+                اقرأ الآن
+              </a>
+            </div>
+          </div>
+          <div class="book-info">
+            <h3>مُمتلئ بالفرَاغ</h3>
+            <p class="author">د. عماد رشاد عثمان</p>
+            <p class="description">رحلة استكشافية في أعماق النفس البشرية للتعرف على أسباب الفراغ الداخلي وكيفية ملئه.</p>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="C:\Users\dell\Downloads\تنزيل (1).jpg" alt="فن اللامبالاة">
+            <div class="book-overlay">
+              <a href="books/la-mabala.pdf" class="read-btn" target="_blank">
+                <i class="fas fa-book-open"></i>
+                اقرأ الآن
+              </a>
+            </div>
+          </div>
+          <div class="book-info">
+            <h3>فن اللامبالاة</h3>
+            <p class="author">مارك مانسون</p>
+            <p class="description">عيش حياة تتعارض مع التوقعات المجتمعية وتتعلم كيف تهتم بما هو مهم حقاً في الحياة.</p>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="C:\Users\dell\Downloads\تنزيل (1).jpg" alt="كبر دماغك">
+            <div class="book-overlay">
+              <a href="books/demagh.pdf" class="read-btn" target="_blank">
+                <i class="fas fa-book-open"></i>
+                اقرأ الآن
+              </a>
+            </div>
+          </div>
+          <div class="book-info">
+            <h3>كبر دماغك</h3>
+            <p class="author">د. خالد المنيف</p>
+            <p class="description">دليل عملي لتطوير التفكير الإيجابي والتخلص من المعتقدات السلبية التي تقيد النمو الشخصي.</p>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="C:\Users\dell\Downloads\تنزيل (1).jpg" alt="القوة الهادئة">
+            <div class="book-overlay">
+              <a href="books/quwa.pdf" class="read-btn" target="_blank">
+                <i class="fas fa-book-open"></i>
+                اقرأ الآن
+              </a>
+            </div>
+          </div>
+          <div class="book-info">
+            <h3>القوة الهادئة</h3>
+            <p class="author">سوزان كين</p>
+            <p class="description">اكتشف قوة الانطوائية في عالم لا يتوقف عن الكلام، وتعلم كيف تستفيد من صفاتك الفريدة.</p>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="C:\Users\dell\Downloads\تنزيل (1).jpg" alt="العادات الذرية">
+            <div class="book-overlay">
+              <a href="books/adat.pdf" class="read-btn" target="_blank">
+                <i class="fas fa-book-open"></i>
+                اقرأ الآن
+              </a>
+            </div>
+          </div>
+          <div class="book-info">
+            <h3>العادات الذرية</h3>
+            <p class="author">جيمس كلير</p>
+            <p class="description">طريقة سهلة وبسيطة لبناء عادات جيدة والتخلص من العادات السيئة من خلال تغييرات صغيرة مستدامة.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-feather-alt"></i>
+          <span>نَفَس</span>
+        </div>
+        <p>مساحة هادئة للقراءة والتأمل والنمو الشخصي</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 نَفَس. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

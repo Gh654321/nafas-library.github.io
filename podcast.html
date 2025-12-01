@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نَفَس - البودكاست</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* شريط التنقل */
+    .nav-menu li a {
+        color: #745276 !important;
+    }
+    
+    .nav-logo a span {
+        color: #745276 !important;
+    }
+    
+    .nav-logo a i {
+        color: #745276 !important;
+    }
+    
+    /* هيدر الصفحة */
+    .page-header {
+        margin-top: 70px;
+        padding: 100px 0 80px;
+        background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%) !important;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .page-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    }
+    
+    .page-header .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .page-header h1 {
+        color: #745276 !important;
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .page-header p {
+        color: #745276 !important;
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-shadow: 0 1px 5px rgba(255, 255, 255, 0.5);
+        line-height: 1.8;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .page-header i {
+        color: #745276 !important;
+        text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        font-size: 3rem;
+    }
+    
+    /* قسم البودكاست */
+    .podcast-page {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      min-height: 100vh;
+    }
+    
+    .podcast-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    
+    /* تصميم بطاقات البودكاست */
+    .podcast-item {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      border: 2px solid #f0f0f0;
+      position: relative;
+    }
+    
+    .podcast-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border-color: #745276;
+    }
+    
+    .podcast-cover {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(45deg, #FFB6C1, #D8BFD8);
+    }
+    
+    .podcast-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .podcast-item:hover .podcast-cover img {
+      transform: scale(1.05);
+    }
+    
+    /* مستوى الصعوبة */
+    .difficulty {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #745276;
+      z-index: 2;
+    }
+    
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.9);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    
+    .play-btn a {
+      color: #745276;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .play-btn:hover {
+      background: #745276;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .play-btn:hover a {
+      color: white;
+    }
+    
+    .podcast-info {
+      padding: 2rem;
+    }
+    
+    .podcast-info h3 {
+      color: #2D3047;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    
+    .podcast-info p {
+      color: #666;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .podcast-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #745276;
+      font-size: 0.9rem;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 1rem;
+    }
+    
+    .podcast-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .podcast-meta i {
+      color: #FFC0CB;
+    }
+    
+    /* الفوتر */
+    footer {
+        background: linear-gradient(135deg, #FFB6C1 0%, #D8BFD8 50%, #E6E6FA 100%) !important;
+    }
+    
+    .footer-content, .footer-bottom {
+        color: #745276 !important;
+    }
+    
+    .footer-logo i, .footer-logo span {
+        color: #745276 !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <i class="fas fa-feather-alt"></i>
+          <span>نَفَس</span>
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="books.html">الكتب</a></li>
+        <li><a href="quotes.html">الاقتباسات</a></li>
+        <li><a href="podcast.html" class="active">البودكاست</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1><i class="fas fa-headphones"></i> البودكاست التحفيزي</h1>
+      <p>جلسات صوتية تساعدك على التأمل والتفكير الإيجابي والاسترخاء</p>
+    </div>
+  </section>
+
+  <section class="podcast-page">
+    <div class="container">
+      <!-- تم إزالة دليل التقدم هنا -->
+      
+      <div class="podcast-list">
+        <!-- المستوى 1: مبتدئ -->
+        <div class="podcast-item">
+          <div class="difficulty">مبتدئ</div>
+          <div class="podcast-cover">
+            <img src="https://img.youtube.com/vi/dBqO46XXbjI/sddefault.jpg" alt="أساسيات التنفس الواعي">
+            <div class="play-btn">
+              <a href="https://youtu.be/dBqO46XXbjI?si=twegcZC36fQuHlFw" target="_blank">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <h3>١. أساسيات التنفس الواعي</h3>
+            <p>ابدأ رحلتك بتعلم أبسط وأهم تقنية: التنفس الصحيح. جلسة قصيرة تناسب المبتدئين تماماً.</p>
+            <div class="podcast-meta">
+              <span><i class="far fa-clock"></i> ١٠ دقائق</span>
+              <span><i class="fas fa-signal"></i> المستوى الأول</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- المستوى 2: تحسين التركيز -->
+        <div class="podcast-item">
+          <div class="difficulty">متوسط</div>
+          <div class="podcast-cover">
+            <img src="https://img.youtube.com/vi/PpKbqAZbR_w/sddefault.jpg" alt="تحسين التركيز الذهني">
+            <div class="play-btn">
+              <a href="https://youtu.be/PpKbqAZbR_w?si=jB5auig_c0T_RupT" target="_blank">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <h3>٢. تحسين التركيز الذهني</h3>
+            <p>بعد إتقان التنفس، تعلم تمارين بسيطة لزيادة انتباهك وتركيزك في العمل والدراسة.</p>
+            <div class="podcast-meta">
+              <span><i class="far fa-clock"></i> ١٥ دقيقة</span>
+              <span><i class="fas fa-signal"></i> المستوى الثاني</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- المستوى 3: الهدوء الداخلي -->
+        <div class="podcast-item">
+          <div class="difficulty">متوسط</div>
+          <div class="podcast-cover">
+            <img src="https://img.youtube.com/vi/pLbnq8eEVhI/sddefault.jpg" alt="إيجاد الهدوء الداخلي">
+            <div class="play-btn">
+              <a href="https://youtu.be/pLbnq8eEVhI?si=3OehK33bgeMXQUgZ" target="_blank">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <h3>٣. إيجاد الهدوء الداخلي</h3>
+            <p>اكتشف كيف تصل إلى السلام النفسي وسط ضغوط الحياة اليومية وتتعلم فن الهدوء.</p>
+            <div class="podcast-meta">
+              <span><i class="far fa-clock"></i> ٢٠ دقيقة</span>
+              <span><i class="fas fa-signal"></i> المستوى الثالث</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- المستوى 4: التأمل المتوسط -->
+        <div class="podcast-item">
+          <div class="difficulty">متقدم</div>
+          <div class="podcast-cover">
+            <img src="https://img.youtube.com/vi/MkCwHpMehAc/sddefault.jpg" alt="جلسة تأمل متوسطة">
+            <div class="play-btn">
+              <a href="https://youtu.be/MkCwHpMehAc?si=WOthvPjFpjro64-I" target="_blank">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <h3>٤. جلسة تأمل متوسطة</h3>
+            <p>الآن جرب رحلة تأملية أعمق تستمر لمدة أطول للاسترخاء الشامل وتحرير الذهن.</p>
+            <div class="podcast-meta">
+              <span><i class="far fa-clock"></i> ٢٥ دقيقة</span>
+              <span><i class="fas fa-signal"></i> المستوى الرابع</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- المستوى 5: الشفاء النفسي -->
+        <div class="podcast-item">
+          <div class="difficulty">متقدم</div>
+          <div class="podcast-cover">
+            <img src="https://img.youtube.com/vi/lQ98PLbcqA0/sddefault.jpg" alt="بداية رحلة الشفاء النفسي">
+            <div class="play-btn">
+              <a href="https://youtu.be/lQ98PLbcqA0?si=bMwb68njlbolxSzy" target="_blank">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <h3>٥. بداية رحلة الشفاء النفسي</h3>
+            <p>تعلم خطوات أولية للتعافي العاطفي والتخلص من المشاعر السلبية المتراكمة.</p>
+            <div class="podcast-meta">
+              <span><i class="far fa-clock"></i> ٣٠ دقيقة</span>
+              <span><i class="fas fa-signal"></i> المستوى الخامس</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- المستوى 6: التواصل العميق -->
+        <div class="podcast-item">
+          <div class="difficulty">متقدم جداً</div>
+          <div class="podcast-cover">
+            <img src="https://img.youtube.com/vi/iC28-X-BEFc/sddefault.jpg" alt="التواصل العميق مع الذات">
+            <div class="play-btn">
+              <a href="https://youtu.be/iC28-X-BEFc?si=KQB4hZLnYwhGb6Rb" target="_blank">
+                <i class="fas fa-play"></i>
+              </a>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <h3>٦. التواصل العميق مع الذات</h3>
+            <p>المرحلة الأخيرة: رحلة استكشافية لأعماق النفس والوصول إلى الفهم الذاتي العميق.</p>
+            <div class="podcast-meta">
+              <span><i class="far fa-clock"></i> ٣٥ دقيقة</span>
+              <span><i class="fas fa-signal"></i> المستوى السادس</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-feather-alt"></i>
+          <span>نَفَس</span>
+        </div>
+        <p>مساحة هادئة للقراءة والتأمل والنمو الشخصي</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 نَفَس. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
